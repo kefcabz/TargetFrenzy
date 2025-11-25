@@ -8,6 +8,9 @@ public class WardenPlayerController : MonoBehaviour
     public Transform cameraTransform;
     public float normalFOV = 60f;
     public float zoomedFOV = 20f;
+    public float shotForce = 10f;
+    public GameObject bulletPrefab;
+    public Transform shotPoint;
     public GameObject scopeOverlay;   
     public GameObject weaponModel;    
     private CharacterController controller;
@@ -30,6 +33,7 @@ public class WardenPlayerController : MonoBehaviour
         HandleMouseLook();
         HandleMovement();
         HandleScope();
+        HandleShot();
     }
 
     void HandleMouseLook()
@@ -69,6 +73,22 @@ public class WardenPlayerController : MonoBehaviour
             cameraTransform.GetComponent<Camera>().fieldOfView = normalFOV;
             if (scopeOverlay) scopeOverlay.SetActive(false);
             if (weaponModel) weaponModel.SetActive(true);
+        }
+    }
+
+    void HandleShot()
+    {
+        if (Input.GetMouseButtonDown(0)) // Left click
+        {
+            if (bulletPrefab != null && shotPoint != null)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, shotPoint.position, shotPoint.rotation);
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddForce(shotPoint.forward * shotForce, ForceMode.VelocityChange);
+                }
+            }
         }
     }
 }

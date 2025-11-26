@@ -11,9 +11,11 @@ public class WardenPlayerController : MonoBehaviour
     public float shotForce = 10f;
     public GameObject bulletPrefab;
     public Transform shotPoint;
+    public Transform scopeShotPoint;
     public GameObject scopeOverlay;   
     public GameObject weaponModel;    
     private CharacterController controller;
+    public bool isScoped = false;
     private float xRotation = 0f;
     private Vector3 velocity;
 
@@ -62,14 +64,16 @@ public class WardenPlayerController : MonoBehaviour
 
     void HandleScope()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1)) 
         {
+            isScoped = true;
             cameraTransform.GetComponent<Camera>().fieldOfView = zoomedFOV;
             if (scopeOverlay) scopeOverlay.SetActive(true);
             if (weaponModel) weaponModel.SetActive(false);
         }
-        else
+        else 
         {
+            isScoped = false;
             cameraTransform.GetComponent<Camera>().fieldOfView = normalFOV;
             if (scopeOverlay) scopeOverlay.SetActive(false);
             if (weaponModel) weaponModel.SetActive(true);
@@ -78,15 +82,27 @@ public class WardenPlayerController : MonoBehaviour
 
     void HandleShot()
     {
-        if (Input.GetMouseButtonDown(0)) // Left click
+        if (Input.GetMouseButtonDown(0))
         {
-            if (bulletPrefab != null && shotPoint != null)
+            Transform currentShotPoint;
+            if (isScoped)
             {
-                GameObject bullet = Instantiate(bulletPrefab, shotPoint.position, shotPoint.rotation);
+                currentShotPoint = scopeShotPoint;
+            }
+            else
+            {
+                currentShotPoint = shotPoint;
+            }
+
+            if (bulletPrefab != null && currentShotPoint != null)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, currentShotPoint.position, currentShotPoint.rotation);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
                 if (rb != null)
                 {
-                    rb.AddForce(shotPoint.forward * shotForce, ForceMode.VelocityChange);
+
+                    rb.AddForce(currentShotPoint.forward * shotForce, ForceMode.VelocityChange);
                 }
             }
         }

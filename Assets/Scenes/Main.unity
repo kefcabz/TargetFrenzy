@@ -564,6 +564,7 @@ Transform:
   - {fileID: 809101530}
   - {fileID: 1170372546}
   - {fileID: 1418564879}
+  - {fileID: 367405139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99343514
@@ -2511,6 +2512,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a352243a7ef767044a66e3541605f536, type: 3}
+--- !u!1 &367405138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 367405139}
+  m_Layer: 0
+  m_Name: CourtyardCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &367405139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367405138}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.09061754, y: 0.00001, z: 26.53}
+  m_LocalScale: {x: 0.25, y: 0.5, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 96916949}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &386931176
 GameObject:
   m_ObjectHideFlags: 0
@@ -5242,6 +5274,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763064032}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &764758696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 764758697}
+  m_Layer: 0
+  m_Name: scopeShotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &764758697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764758696}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.13052624, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: -0.03, y: 1.077, z: 3.45}
+  m_LocalScale: {x: 0.8333332, y: 0.8333333, z: 0.8333332}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945585739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769130973
 GameObject:
   m_ObjectHideFlags: 0
@@ -5365,6 +5428,7 @@ GameObject:
   - component: {fileID: 809101529}
   - component: {fileID: 809101528}
   - component: {fileID: 809101527}
+  - component: {fileID: 809101531}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -5465,6 +5529,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 96916949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &809101531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809101526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 7ff5d12b46a05714c9574b1e000f811e, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &848226857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a352243a7ef767044a66e3541605f536, type: 3}
@@ -5675,7 +5771,7 @@ Transform:
   m_GameObject: {fileID: 890381075}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.0436194, z: -0, w: 0.9990483}
-  m_LocalPosition: {x: 0.5963699, y: -0.0016662477, z: 2.92015}
+  m_LocalPosition: {x: 0.63, y: -0.0016662477, z: 3.32}
   m_LocalScale: {x: 0.8333332, y: 0.83333325, z: 0.8333332}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6662,6 +6758,59 @@ Transform:
   - {fileID: 1385035359}
   m_Father: {fileID: 96916949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1194411938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194411940}
+  - component: {fileID: 1194411941}
+  m_Layer: 0
+  m_Name: PrisonerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1194411940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194411938}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 51.56025, y: 11.45917, z: -192.52948}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1194411941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194411938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb1c6f3a98fa5f4e8e6dc844cac7fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PrisonerSpawner
+  prisonerPrefab: {fileID: 48288736618767263, guid: f8595e5d5aef77c4498db7bf99408411, type: 3}
+  numberToSpawn: 154
+  courtyardCenter: {fileID: 367405139}
+  roadTargets:
+  - {fileID: 1258265821}
+  - {fileID: 1747464038}
+  - {fileID: 300218150}
+  - {fileID: 1729255879}
+  spawnRadius: 5
 --- !u!1 &1195387252
 GameObject:
   m_ObjectHideFlags: 0
@@ -11389,6 +11538,7 @@ Transform:
   - {fileID: 99343515}
   - {fileID: 1016221656}
   - {fileID: 890381076}
+  - {fileID: 764758697}
   m_Father: {fileID: 1923489727}
   m_LocalEulerAnglesHint: {x: 0, y: -15, z: 0}
 --- !u!1 &1965305773
@@ -12924,7 +13074,7 @@ Transform:
   m_GameObject: {fileID: 2118407460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.55069, y: 42.95, z: -29.07}
+  m_LocalPosition: {x: 5.55069, y: 42.12, z: -29.07}
   m_LocalScale: {x: 3, y: 5, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12973,11 +13123,16 @@ MonoBehaviour:
   moveSpeed: 5
   gravity: -9.81
   mouseSensitivity: 200
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 1923489727}
   normalFOV: 60
-  zoomedFOV: 20
-  scopeOverlay: {fileID: 0}
-  weaponModel: {fileID: 0}
+  zoomedFOV: 30
+  shotForce: 400
+  bulletPrefab: {fileID: 8537380840277493429, guid: 5c183e9c181c8074b9b6dbe8cc57adfc, type: 3}
+  shotPoint: {fileID: 890381076}
+  scopeShotPoint: {fileID: 764758697}
+  scopeOverlay: {fileID: 459067576}
+  weaponModel: {fileID: 1945585738}
+  isScoped: 0
 --- !u!1 &2131181243
 GameObject:
   m_ObjectHideFlags: 0
@@ -13208,3 +13363,4 @@ SceneRoots:
   - {fileID: 96916949}
   - {fileID: 1715985181}
   - {fileID: 2118407465}
+  - {fileID: 1194411940}

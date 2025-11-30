@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class PrisonerSpawner : MonoBehaviour
 {
     public GameObject prisonerPrefab;
-    public int numberToSpawn = 200;
+    public int numberToSpawn = 5;
     public Transform courtyardCenter;
     public Transform[] roadTargets;
     public float spawnRadius = 100f;

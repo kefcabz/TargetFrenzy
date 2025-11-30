@@ -9,22 +9,22 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    void Update()
+   void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Prisoner"))
     {
- 
-    }
+        PrisonerHealth prisonerHealth = collision.gameObject.GetComponent<PrisonerHealth>();
+        if (prisonerHealth != null)
+        {
+            prisonerHealth.TakeHit(collision.contacts[0].thisCollider);
+        }
 
-    void OnCollisionEnter(Collision collision)
+        Destroy(gameObject);
+    }
+    else
     {
-
-        if (collision.gameObject.CompareTag("Prisoner"))
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
+}
+
 }

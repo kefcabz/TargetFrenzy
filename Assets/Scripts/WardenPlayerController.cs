@@ -22,9 +22,6 @@ public class WardenPlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         cameraTransform.GetComponent<Camera>().fieldOfView = normalFOV;
         if (scopeOverlay) scopeOverlay.SetActive(false);
         if (weaponModel) weaponModel.SetActive(true);

@@ -11,7 +11,7 @@ public class PrisonerSpawner : MonoBehaviour
     public float spawnRadius = 100f;
     public int startingPrisoners = 5;
     public float waveDelay = 4f; // next wave delay
-    public float speedIncreasePerWave = 1f;
+    public float speedIncreasePerWave = 1.5f;
     public TextMeshProUGUI waveCountdownText; 
     private int currentWave = 1;
     private int prisonersPerWave;

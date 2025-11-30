@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject hudPanel;
     public GameObject gameOverPanel;
     public TextMeshProUGUI scoreText;
+    public CursorController cursorController;
 
     private int score = 0;
     public GameState currentState = GameState.Title;
@@ -36,16 +37,25 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateGameState(GameState newState)
+{
+    currentState = newState;
+
+    titleScreenPanel.SetActive(newState == GameState.Title);
+    instructionsPanel.SetActive(newState == GameState.Instructions);
+    hudPanel.SetActive(newState == GameState.Playing);
+    gameOverPanel.SetActive(newState == GameState.GameOver);
+
+    Time.timeScale = (newState == GameState.Playing) ? 1f : 0f;
+
+    if (cursorController != null)
     {
-        currentState = newState;
-
-        titleScreenPanel.SetActive(newState == GameState.Title);
-        instructionsPanel.SetActive(newState == GameState.Instructions);
-        hudPanel.SetActive(newState == GameState.Playing);
-        gameOverPanel.SetActive(newState == GameState.GameOver);
-
-        Time.timeScale = (newState == GameState.Playing) ? 1f : 0f;
+        if (newState == GameState.Playing)
+            cursorController.HideCursor();
+        else
+            cursorController.ShowCursor();
     }
+}
+
 
     // UI Button Functions
     public void StartGame()

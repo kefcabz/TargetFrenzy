@@ -3,7 +3,7 @@ using UnityEngine;
 public class PrisonerMovement : MonoBehaviour
 {
     public Vector3 targetPosition;
-    public float speed = 6f;
+    public float speed = 10f;
 
     void Update()
     {

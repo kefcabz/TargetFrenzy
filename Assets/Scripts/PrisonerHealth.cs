@@ -8,22 +8,23 @@ public class PrisonerHealth : MonoBehaviour
     public Collider headCollider;
     public Collider bodyCollider;
 
-    public event Action OnPrisonerDeath; 
+    public event Action OnPrisonerDeath;
 
     public void TakeHit(Collider hitCollider)
     {
+        int pointsToAdd = 0;
+
         if (hitCollider == headCollider)
-        {
-            GameManager.Instance.AddScore(headshotPoints);
-        }
+            pointsToAdd = headshotPoints;
         else if (hitCollider == bodyCollider)
-        {
-            GameManager.Instance.AddScore(bodyshotPoints);
-        }
+            pointsToAdd = bodyshotPoints;
+
+        GameManager.Instance.AddScore(pointsToAdd);
 
         OnPrisonerDeath?.Invoke();
-        OnPrisonerDeath = null; 
+        OnPrisonerDeath = null;
 
         Destroy(gameObject);
     }
+
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Prisoner
+  - Fence
   layers:
   - Default
   - TransparentFX

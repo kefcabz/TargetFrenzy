@@ -8,15 +8,17 @@ public class PrisonerSpawner : MonoBehaviour
     public GameObject prisonerPrefab;
     public Transform courtyardCenter;
     public Transform[] roadTargets;
-    public float spawnRadius = 100f;
+    public float spawnRadius = 350f;
     public int startingPrisoners = 5;
-    public float waveDelay = 4f; // next wave delay
-    public float speedIncreasePerWave = 1.5f;
-    public TextMeshProUGUI waveCountdownText; 
-    private int currentWave = 1;
+    public float waveDelay = 4f; 
+    public float speedIncreasePerWave = 2.5f;
+    public TextMeshProUGUI waveCountdownText;
+    public TextMeshProUGUI waveNumberText; 
+    public int currentWave = 1;
     private int prisonersPerWave;
-    private int prisonersRemaining; 
+    private int prisonersRemaining;
     private bool waveInProgress = false;
+    private bool countdownRunning = false;
 
     void Start()
     {
@@ -32,11 +34,15 @@ public class PrisonerSpawner : MonoBehaviour
         waveInProgress = true;
         prisonersRemaining = prisonersPerWave;
 
+        if (waveNumberText != null)
+            waveNumberText.text = "Wave: " + currentWave;
+
         for (int i = 0; i < prisonersPerWave; i++)
         {
             SpawnPrisoner();
         }
     }
+
 
     void SpawnPrisoner()
     {
@@ -63,10 +69,10 @@ public class PrisonerSpawner : MonoBehaviour
             {
                 prisonersRemaining--;
 
-                // Only when all prisoners in the wave are dead
-                if (prisonersRemaining <= 0 && waveInProgress)
+                if (prisonersRemaining <= 0 && waveInProgress && !countdownRunning)
                 {
                     waveInProgress = false;
+                    countdownRunning = true;   
                     prisonersPerWave += 2;
                     currentWave++;
                     StartCoroutine(WaveCountdownCoroutine());
@@ -89,6 +95,7 @@ public class PrisonerSpawner : MonoBehaviour
 
             waveCountdownText.gameObject.SetActive(false);
         }
+        countdownRunning = false;
 
         StartNextWave();
     }

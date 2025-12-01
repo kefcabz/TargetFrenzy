@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject hudPanel;
     public GameObject gameOverPanel;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverScoreText;
+    public TextMeshProUGUI gameOverWaveText; 
     public CursorController cursorController;
-
     private int score = 0;
     public GameState currentState = GameState.Title;
 
@@ -57,7 +58,6 @@ public class GameManager : MonoBehaviour
 }
 
 
-    // UI Button Functions
     public void StartGame()
     {
         score = 0;
@@ -74,11 +74,26 @@ public class GameManager : MonoBehaviour
     {
         UpdateGameState(GameState.Title);
     }
-
     public void GameOver()
     {
+        if (gameOverScoreText != null)
+            gameOverScoreText.text = "Score: " + score;
+
         UpdateGameState(GameState.GameOver);
     }
+    public void GameOver(int finalWave)
+    {
+        if (gameOverScoreText != null)
+            gameOverScoreText.text = "Score: " + score;
+
+        if (gameOverWaveText != null)
+            gameOverWaveText.text = "Wave Reached: " + finalWave;
+
+        UpdateGameState(GameState.GameOver);
+    }
+
+
+
 
     public void PlayAgain()
     {
@@ -91,7 +106,6 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    // For scoring later
     public void AddScore(int amount)
     {
         score += amount;

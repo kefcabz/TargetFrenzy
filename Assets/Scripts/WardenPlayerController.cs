@@ -18,6 +18,8 @@ public class WardenPlayerController : MonoBehaviour
     public bool isScoped = false;
     private float xRotation = 0f;
     private Vector3 velocity;
+    public float fireCooldown = 0.75f;
+    private float nextFireTime = 0f;
 
     void Start()
     {
@@ -79,17 +81,11 @@ public class WardenPlayerController : MonoBehaviour
 
     void HandleShot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime)
         {
-            Transform currentShotPoint;
-            if (isScoped)
-            {
-                currentShotPoint = scopeShotPoint;
-            }
-            else
-            {
-                currentShotPoint = shotPoint;
-            }
+            nextFireTime = Time.time + fireCooldown;
+
+            Transform currentShotPoint = isScoped ? scopeShotPoint : shotPoint;
 
             if (bulletPrefab != null && currentShotPoint != null)
             {
@@ -98,10 +94,10 @@ public class WardenPlayerController : MonoBehaviour
 
                 if (rb != null)
                 {
-
                     rb.AddForce(currentShotPoint.forward * shotForce, ForceMode.VelocityChange);
                 }
             }
         }
     }
+
 }

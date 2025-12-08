@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public enum GameState
 {
@@ -23,6 +24,9 @@ public class GameManager : MonoBehaviour
     public CursorController cursorController;
     private int score = 0;
     public GameState currentState = GameState.Title;
+    public TextMeshProUGUI waveAlertText;
+    public float waveAlertDuration = 2f;
+    public PrisonerSpawner spawner;
 
     void Awake()
     {
@@ -63,6 +67,8 @@ public class GameManager : MonoBehaviour
         score = 0;
         scoreText.text = "Score: 0";
         UpdateGameState(GameState.Playing);
+
+        StartCoroutine(ShowWaveAlertAndStart());
     }
 
     public void ShowInstructions()
@@ -111,4 +117,28 @@ public class GameManager : MonoBehaviour
         score += amount;
         scoreText.text = "Score: " + score;
     }
+
+    private IEnumerator ShowWaveAlertAndStart()
+    {
+        if (waveAlertText != null)
+        {
+            waveAlertText.gameObject.SetActive(true);
+            waveAlertText.text = "Prisoners Escaping! Hold the Line!";
+        }
+
+        yield return new WaitForSecondsRealtime(waveAlertDuration);
+
+        if (waveAlertText != null)
+        {
+            waveAlertText.gameObject.SetActive(false);
+        }
+
+        UpdateGameState(GameState.Playing);
+
+        if (spawner != null)
+        {
+            spawner.StartWaves();  
+        }
+    }
+
 }
